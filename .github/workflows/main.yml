@@ -8,9 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ruby/setup-ruby@v1.117.0
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: latest
+          ruby-version: 3.0
           bundler-cache: true 
 
       - name: Bump podspec
