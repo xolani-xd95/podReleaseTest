@@ -1,8 +1,8 @@
 name: Bump version
 on:
-  push:
-    branches:
-      - main
+  pull_request:
+    branches: "main"
+    types: closed 
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,6 +16,6 @@ jobs:
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ steps.tag_version.outputs.new_tag }}
+          tag: 2.0.0
           name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
