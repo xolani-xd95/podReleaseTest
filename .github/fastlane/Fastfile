@@ -3,6 +3,6 @@ fastlane_version '2.178.0'
 desc 'Bump podspec version'
 lane :bump_podspec_ci do
     version = version_bump_podspec(path: "../xolaniRabbitPod.podspec", bump_type: ENV["PODSPEC_BUMP_TYPE"])
-    cocoapods(podfile: "../App/Podfile")
+    cocoapods(podfile: "../Podfile")
     sh("echo PODSPEC_BUMP_NEW_VERSION=#{version} >> $GITHUB_ENV")
 end
