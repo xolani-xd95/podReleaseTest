@@ -27,6 +27,6 @@ jobs:
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'refs/tags/${{ env.env.PODSPEC_BUMP_NEW_VERSION }}',
+              ref: 'refs/tags/1.10.10',
               sha: context.sha
             })
