@@ -8,6 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Bump podspec
+        env:
+          PODSPEC_BUMP_TYPE: patch
+        run: | 
+          cd .github
+          bundle exec fastlane bump_podspec_ci
+          
       - name: Create tag
         uses: actions/github-script@v5
         with:
@@ -15,6 +23,6 @@ jobs:
             github.rest.git.createRef({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              ref: 'refs/tags/${{ secrets.GITHUB_TOKEN }}',
+              ref: 'refs/tags/${{ env.env.PODSPEC_BUMP_NEW_VERSION }}',
               sha: context.sha
             })
