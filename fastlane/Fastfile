@@ -13,7 +13,6 @@ platform :ios do
     end
     pod_lib_lint
     add_git_tag(tag: "#{version}")
-    push_git_tags
     pod_push
   end
 end
