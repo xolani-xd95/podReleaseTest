@@ -9,11 +9,7 @@ platform :ios do
   lane :release_current do
     version = version_get_podspec(path: @podspec_name)
     UI.message("#{version}")
-    if !git_tag_exists(tag: version)
-      pod_lib_lint
-      add_git_tag(tag: "#{version}")
-      push_git_tags(force: "true")	
-      pod_push
-    end
+     pod_lib_lint	
+     pod_push
   end
 end
