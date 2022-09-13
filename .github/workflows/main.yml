@@ -7,15 +7,28 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Bump version and push tag
-        id: tag_version
-        uses: mathieudutour/github-tag-action@v6.0
+      - uses: actions/checkout@v3
+      
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Create a GitHub release
-        uses: ncipollo/release-action@v1
+          ruby-version: '2.7.2'
+          bundler-cache: true 
+          
+      - name: Bump podspec
+        env:
+          PODSPEC_BUMP_TYPE: patch
+        run: | 
+          cd .github
+          bundle exec fastlane bump_podspec_ci
+          
+      - name: Create tag
+        uses: actions/github-script@v5
         with:
-          tag: ${{ steps.tag_version.outputs.new_tag }}
-          name: Release ${{ steps.tag_version.outputs.new_tag }}
-          body: ${{ steps.tag_version.outputs.changelog }}
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: 'refs/tags/${{ env.env.PODSPEC_BUMP_NEW_VERSION }}',
+              sha: context.sha
+            })
