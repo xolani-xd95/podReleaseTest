@@ -26,7 +26,7 @@ jobs:
 
       - name: Bump podspec
         env:
-          PODSPEC_BUMP_TYPE: patch
+          PODSPEC_BUMP_TYPE: ${{ inputs.bump_type }}
         run: | 
           cd .github
           bundle exec fastlane bump_podspec_ci
