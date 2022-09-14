@@ -1,8 +1,19 @@
 name: Bump version
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      bump_type:
+        required: true
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+  workflow_call:
+    inputs:
+      bump_type: # "major", "minor" or "patch"
+        required: true
+        type: string
 jobs:
   build:
     runs-on: macos-latest
