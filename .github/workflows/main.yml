@@ -38,6 +38,7 @@ jobs:
           git diff HEAD
           git add xolaniRabbitPod.podspec Podfile.lock
           git commit -m "Bump pod ${{ inputs.bump_type }} ${{ env.PODSPEC_BUMP_NEW_VERSION }}"
+          git push origin
       
       - uses: actions/checkout@v3
        
