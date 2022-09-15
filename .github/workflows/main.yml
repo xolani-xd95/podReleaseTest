@@ -24,23 +24,23 @@ jobs:
           ruby-version: 3.0
           bundler-cache: true 
           
-      - name: Bump podspec
-        env:
-          PODSPEC_BUMP_TYPE: ${{ inputs.bump_type }}
-        run: | 
-          cd .github
-          bundle exec fastlane bump_podspec_ci
+#       - name: Bump podspec
+#         env:
+#           PODSPEC_BUMP_TYPE: ${{ inputs.bump_type }}
+#         run: | 
+#           cd .github
+#           bundle exec fastlane bump_podspec_ci
           
-      - name: Commit changes
-        run: |
-          git config user.email "dlaminixolani440@gmail.com"
-          git config user.name "xolani-xd95"
-          git diff HEAD
-          git add xolaniRabbitPod.podspec Podfile.lock
-          git commit -m "Bump pod ${{ inputs.bump_type }} ${{ env.PODSPEC_BUMP_NEW_VERSION }}"
-          git push origin
+#       - name: Commit changes
+#         run: |
+#           git config user.email "dlaminixolani440@gmail.com"
+#           git config user.name "xolani-xd95"
+#           git diff HEAD
+#           git add xolaniRabbitPod.podspec Podfile.lock
+#           git commit -m "Bump pod ${{ inputs.bump_type }} ${{ env.PODSPEC_BUMP_NEW_VERSION }}"
+#           git push origin
       
-      - uses: actions/checkout@main
+#       - uses: actions/checkout@main
        
       - name: Create tag
         uses: actions/github-script@v5
