@@ -6,7 +6,3 @@ lane :bump_podspec_ci do
     cocoapods(podfile: "../Podfile")
     sh("echo PODSPEC_BUMP_NEW_VERSION=#{version} >> $GITHUB_ENV")
 end
-
-lane :get_latest_podspec do
-    cocoapods(podfile: "../Podfile")
-end
