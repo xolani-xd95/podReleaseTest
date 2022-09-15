@@ -40,7 +40,7 @@ jobs:
           git commit -m "Bump pod ${{ inputs.bump_type }} ${{ env.PODSPEC_BUMP_NEW_VERSION }}"
           git push origin
       
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@main
        
       - name: Create tag
         uses: actions/github-script@v5
