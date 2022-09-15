@@ -40,11 +40,10 @@ jobs:
           git commit -m "Bump pod ${{ inputs.bump_type }} ${{ env.PODSPEC_BUMP_NEW_VERSION }}"
           
       - name: Push changes
-        run: |
-          git config --global user.name 'xolani-xd95'
-          git config --global user.email 'dlaminixolani440@gmail.com'
-          git commit -am "Automated report"
-          git push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PAT }}
+          branch: ${{ github.ref }}
           
       - name: Create tag
         uses: actions/github-script@v5
