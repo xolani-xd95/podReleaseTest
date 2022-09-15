@@ -43,12 +43,6 @@ jobs:
       - uses: actions/checkout@main
        
       - name: Create tag
-        uses: actions/github-script@v5
+        uses: EndBug/latest-tag@latest
         with:
-          script: |
-            github.rest.git.createRef({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              ref: 'refs/tags/${{ env.PODSPEC_BUMP_NEW_VERSION }}',
-              sha: context.head.sha
-            })
+          tag-name: ${{ env.PODSPEC_BUMP_NEW_VERSION }}'
