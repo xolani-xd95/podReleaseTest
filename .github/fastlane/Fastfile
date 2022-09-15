@@ -8,7 +8,5 @@ lane :bump_podspec_ci do
 end
 
 lane :get_latest_podspec do
-     version = version_get_podspec(path: "../xolaniRabbitPod.podspec")
     cocoapods(podfile: "../Podfile")
-    sh("echo PODSPEC_BUMP_NEW_VERSION=#{version} >> $GITHUB_ENV")
 end
