@@ -1,19 +1,8 @@
 name: Bump version
 on:
-  workflow_dispatch:
-    inputs:
-      bump_type:
-        required: true
-        type: choice
-        options:
-          - patch
-          - minor
-          - major
-  workflow_call:
-    inputs:
-      bump_type: # "major", "minor" or "patch"
-        required: true
-        type: string
+  push:
+    branches:
+     - main
 jobs:
   build:
     runs-on: macos-latest
@@ -26,7 +15,7 @@ jobs:
           
       - name: Bump podspec
         env:
-          PODSPEC_BUMP_TYPE: ${{ inputs.bump_type }}
+          PODSPEC_BUMP_TYPE: patch
         run: | 
           cd .github
           bundle exec fastlane bump_podspec_ci
