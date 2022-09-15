@@ -8,7 +8,7 @@
     
 Pod::Spec.new do |s|
   s.name             = 'xolaniRabbitPod'
-  s.version          = '3.2.1'
+  s.version          = '4.0.0'
   s.summary          = 'We are testing releasing a pod to bitrise'
 
 # This description is used to generate tags and improve search results.
