@@ -29,7 +29,11 @@ jobs:
           git commit -m "Bump pod ${{ inputs.bump_type }} ${{ env.PODSPEC_BUMP_NEW_VERSION }}"
           git push origin
           
+      - name: Output branch
+        run: "echo Testing branch $(echo ${GITHUB_REF#refs/heads/})"
+        
       - name: Create tag
         uses: EndBug/latest-tag@latest
         with:
           ref: ${{ env.PODSPEC_BUMP_NEW_VERSION }}
+        
