@@ -37,7 +37,7 @@ jobs:
     
     
       - name: Create tag
-        if: GITHUB_REF#refs/heads/ == 'bugfix/'      
+        if: ${{ GITHUB_REF#refs/heads/ }} == 'bugfix/'      
         uses: EndBug/latest-tag@latest
         with:
           ref: ${{ env.PODSPEC_BUMP_NEW_VERSION }}
