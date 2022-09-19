@@ -1,8 +1,8 @@
 name: Bump version
 on:
-  push:
-    branches:
-     - main
+  pull_request:
+    branches: [ "main" ]
+    types: [ closed ]
 jobs:
   build:
     runs-on: macos-latest
