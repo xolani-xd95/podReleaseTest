@@ -5,6 +5,7 @@ on:
     types: [ closed ]
 jobs:
   build:
+    
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
@@ -12,7 +13,7 @@ jobs:
         with:
           ruby-version: 3.0
           bundler-cache: true 
-          
+        
       - name: Bump podspec
         env:
           PODSPEC_BUMP_TYPE: patch
@@ -32,7 +33,10 @@ jobs:
       - name: Output branch
         run: "echo Testing branch $(echo ${GITHUB_REF#refs/heads/})"
         
+    
+    
       - name: Create tag
+        if: GITHUB_REF#refs/heads/ == 'bugfix/'      
         uses: EndBug/latest-tag@latest
         with:
           ref: ${{ env.PODSPEC_BUMP_NEW_VERSION }}
