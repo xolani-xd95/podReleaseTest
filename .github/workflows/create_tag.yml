@@ -11,4 +11,4 @@ jobs:
       - name: Create tag
         uses: xolani-xd95/podReleaseTest/.github/workflows/main.yml@main
       - name: test
-        run: "echo something"
+        run: "echo testing"
